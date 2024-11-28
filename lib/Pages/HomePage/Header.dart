@@ -1,13 +1,11 @@
-import 'package:cook_smart/Components/SearchInput.dart';
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class Header extends StatelessWidget {
+  const Header({super.key});
 
-  Widget Header() {
+  @override
+  Widget build(BuildContext context) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
       child: Row(
@@ -39,18 +37,6 @@ class HomePage extends StatelessWidget {
                   color: blackColor,
                 ))
           ]),
-        ],
-      ),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Center(
-      child: Column(
-        children: [
-          Header(),
-          SearchInput(),
         ],
       ),
     );

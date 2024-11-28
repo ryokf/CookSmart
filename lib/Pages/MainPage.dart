@@ -1,4 +1,4 @@
-import 'package:cook_smart/Pages/HomePage.dart';
+import 'package:cook_smart/Pages/HomePage/HomePage.dart';
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
 
