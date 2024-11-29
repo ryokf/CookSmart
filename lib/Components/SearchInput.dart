@@ -15,13 +15,13 @@ class SearchInput extends StatelessWidget {
         hintText: 'Cari resep',
         hintStyle: TextStyle(
           color: greyColor, // Warna placeholder
-          fontSize: fontSizeBase + 2, // Ukuran font (dari theme)
+          fontSize: fontSizeLarge, // Ukuran font (dari theme)
           fontWeight: regular,
         ),
         filled: true,
         fillColor: Colors.grey[100], // Warna background input
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(smallRounded), // Radius sudut
+          borderRadius: BorderRadius.circular(mediumRounded), // Radius sudut
           borderSide: BorderSide.none,
            // Tanpa border
         ),

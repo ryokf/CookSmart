@@ -1,5 +1,6 @@
 import 'package:cook_smart/Pages/FavoritePage/FavoritePage.dart';
 import 'package:cook_smart/Pages/HomePage/HomePage.dart';
+import 'package:cook_smart/Pages/ShopingListPage/ShopingListPage.dart';
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
 
@@ -16,7 +17,7 @@ class _MainPageState extends State<MainPage> {
   final List<Widget> _screens = [
     const HomePage(),
     const FavoritePage(),
-    const Text("daftar belanja"),
+    const ShopingListPage(),
     const Text("rencana makan"),
   ];
 
@@ -42,7 +43,7 @@ class _MainPageState extends State<MainPage> {
       backgroundColor: Colors.white,
       body: SafeArea(child: _screens[_currentIndex]),
       bottomNavigationBar: BottomNavigationBar(
-        elevation: 50,
+        backgroundColor: Colors.grey[50],
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
@@ -63,7 +64,7 @@ class _MainPageState extends State<MainPage> {
             label: 'Daftar belanja',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.schedule),
+            icon: Icon(Icons.library_books_rounded),
             label: 'Rencana makan',
           ),
         ],
