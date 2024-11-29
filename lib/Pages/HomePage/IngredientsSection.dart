@@ -1,5 +1,6 @@
+// ignore_for_file: file_names
+
 import 'package:cook_smart/Themes/themes.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class IngredientSection extends StatelessWidget {
@@ -34,7 +35,7 @@ class IngredientSection extends StatelessWidget {
             ),
             decoration:  BoxDecoration(
               color: Colors.grey[300], // Warna header lebih gelap
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
               ),
@@ -42,7 +43,7 @@ class IngredientSection extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
+                const Text(
                   "Resep berdasarkan bahan",
                   
                 ),
@@ -56,7 +57,7 @@ class IngredientSection extends StatelessWidget {
               ],
             ),
           ),
-          Container(
+          SizedBox(
             height: 200,
             child: GridView.builder(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4), itemCount: ingredients.length, itemBuilder: (context, index) {
               final ingredient = ingredients[index];

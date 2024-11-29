@@ -1,6 +1,9 @@
+// ignore_for_file: file_names
+
 import 'package:cook_smart/Components/RecipeCard.dart';
 import 'package:cook_smart/Themes/themes.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 
 class RecipesSection extends StatelessWidget {
   const RecipesSection({super.key});

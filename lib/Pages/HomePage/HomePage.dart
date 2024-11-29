@@ -1,8 +1,10 @@
+// ignore_for_file: file_names
+
 import 'package:cook_smart/Components/SearchInput.dart';
 import 'package:cook_smart/Pages/HomePage/Header.dart';
 import 'package:cook_smart/Pages/HomePage/IngredientsSection.dart';
 import 'package:cook_smart/Pages/HomePage/RecipesSection.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 
@@ -16,14 +18,14 @@ class HomePage extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            Header(),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12),
+            const Header(),
+            const Padding(
+              padding: EdgeInsets.symmetric(vertical: 12),
               child: SearchInput(),
             ),
             IngredientSection(),
-            RecipesSection(),
-            RecipesSection(),
+            const RecipesSection(),
+            const RecipesSection(),
           ],
         ),
       ),

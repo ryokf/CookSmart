@@ -1,5 +1,7 @@
+// ignore_for_file: file_names
+
 import 'package:cook_smart/Themes/themes.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 
@@ -14,13 +16,13 @@ class RecipeCard extends StatelessWidget {
           BoxShadow(
             color: Colors.grey.shade300,
             blurRadius: 4,
-            offset: Offset(1, 2),
+            offset: const Offset(1, 2),
           ),
         ],
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
-      margin: EdgeInsets.only(right: 12),
+      margin: const EdgeInsets.only(right: 12),
       width: 180,
       height: 180,
       child: Column(

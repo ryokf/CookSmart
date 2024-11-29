@@ -1,5 +1,8 @@
+// ignore_for_file: file_names
+
 import 'package:cook_smart/Themes/themes.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+
 
 class Header extends StatelessWidget {
   const Header({super.key});
@@ -10,7 +13,7 @@ class Header extends StatelessWidget {
       margin: const EdgeInsets.symmetric(vertical: 12),
       child: Row(
         children: [
-          Container(
+          SizedBox(
             width: 50,
             height: 50,
             child: ClipRRect(
@@ -20,7 +23,7 @@ class Header extends StatelessWidget {
                   fit: BoxFit.cover),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             width: 10,
           ),
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
