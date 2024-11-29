@@ -34,7 +34,7 @@ class IngredientSection extends StatelessWidget {
               vertical: 12,
             ),
             decoration:  BoxDecoration(
-              color: Colors.grey[300], // Warna header lebih gelap
+              color: Colors.grey[200], // Warna header lebih gelap
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),

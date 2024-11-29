@@ -4,7 +4,6 @@ import 'package:cook_smart/Components/RecipeCard.dart';
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
 
-
 class RecipesSection extends StatelessWidget {
   const RecipesSection({super.key});
 
@@ -17,7 +16,8 @@ class RecipesSection extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 8),
           child: Text(
             "Resep terbaru",
-            style: TextStyle(fontSize: fontSizeLarge, fontWeight: FontWeight.w500),
+            style:
+                TextStyle(fontSize: fontSizeLarge, fontWeight: FontWeight.w500),
           ),
         ),
         Container(
@@ -26,7 +26,13 @@ class RecipesSection extends StatelessWidget {
           child: SingleChildScrollView(
               scrollDirection: Axis.horizontal,
               child: Row(
-                children: List.generate(3, (index) => RecipeCard()),
+                children: List.generate(
+                  3,
+                  (index) => const Padding(
+                    padding: EdgeInsets.only(right: 12),
+                    child: RecipeCard(),
+                  ),
+                ),
               )),
         ),
       ],

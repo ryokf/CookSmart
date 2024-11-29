@@ -1,3 +1,4 @@
+import 'package:cook_smart/Pages/FavoritePage/FavoritePage.dart';
 import 'package:cook_smart/Pages/HomePage/HomePage.dart';
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
@@ -13,14 +14,31 @@ class _MainPageState extends State<MainPage> {
   int _currentIndex = 0;
 
   final List<Widget> _screens = [
-    HomePage(),
-    Text("resep disimpan"),
-    Text("daftar belanja"),
-    Text("rencana makan"),
+    const HomePage(),
+    const FavoritePage(),
+    const Text("daftar belanja"),
+    const Text("rencana makan"),
   ];
+
+  final List<String> appBarTitles = [
+    "",
+    "Resep disimpan",
+    "Daftar belanja",
+    "Rencana makan",
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: _currentIndex != 0
+          ? AppBar(
+              backgroundColor: Colors.white10,
+              title: Text(appBarTitles[_currentIndex],
+                  style: TextStyle(
+                      fontSize: fontSizeBase, fontWeight: FontWeight.w600)),
+              elevation: 1,
+            )
+          : null,
       backgroundColor: Colors.white,
       body: SafeArea(child: _screens[_currentIndex]),
       bottomNavigationBar: BottomNavigationBar(
@@ -45,13 +63,12 @@ class _MainPageState extends State<MainPage> {
             label: 'Daftar belanja',
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.menu),
+            icon: Icon(Icons.schedule),
             label: 'Rencana makan',
           ),
         ],
         selectedItemColor: primaryColor,
         unselectedItemColor: greyColor,
-        showUnselectedLabels: true,
         selectedFontSize: fontSizeBase,
         unselectedFontSize: fontSizeBase,
       ),

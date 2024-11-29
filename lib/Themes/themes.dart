@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 Color primaryColor = const Color(0xFFFF9500);
-Color secondaryColor = Color(0xFFFFF4E5);
-Color backgroundColor = Color(0xFFF2F2F2);
-Color blackColor = Color(0xFF333333);
-Color greyColor = Color(0xFFaaaaaa);
+Color secondaryColor = const Color(0xFFFFF4E5);
+Color backgroundColor = const Color(0xFFF9F9F9);
+Color blackColor = const Color(0xFF333333);
+Color greyColor = const Color(0xFFaaaaaa);
 
 FontWeight light = FontWeight.w300;
 FontWeight regular = FontWeight.w400;

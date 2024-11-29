@@ -22,7 +22,7 @@ class RecipeCard extends StatelessWidget {
         color: Colors.white,
         borderRadius: BorderRadius.circular(12),
       ),
-      margin: const EdgeInsets.only(right: 12),
+      // margin: const EdgeInsets.only(right: 12),
       width: 180,
       height: 180,
       child: Column(
