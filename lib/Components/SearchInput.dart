@@ -19,10 +19,11 @@ class SearchInput extends StatelessWidget {
           fontWeight: regular,
         ),
         filled: true,
-        fillColor: backgroundColor, // Warna background input
+        fillColor: Colors.grey[100], // Warna background input
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(smallRounded), // Radius sudut
-          borderSide: BorderSide.none, // Tanpa border
+          borderSide: BorderSide.none,
+           // Tanpa border
         ),
         contentPadding: const EdgeInsets.symmetric(
           vertical: 12.0,
