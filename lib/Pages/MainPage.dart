@@ -34,9 +34,20 @@ class _MainPageState extends State<MainPage> {
       appBar: _currentIndex != 0
           ? AppBar(
               backgroundColor: Colors.white10,
-              title: Text(appBarTitles[_currentIndex],
+              toolbarHeight: 75,
+              title: Padding(
+                padding: const EdgeInsets.symmetric(vertical: 120),
+                child: Text(
+                  appBarTitles[_currentIndex],
                   style: TextStyle(
-                      fontSize: fontSizeBase, fontWeight: FontWeight.w600)),
+                    fontSize: fontSizeLarge,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w500,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              centerTitle: true,
               elevation: 1,
             )
           : null,

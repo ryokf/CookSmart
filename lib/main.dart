@@ -1,4 +1,5 @@
 import 'package:cook_smart/Pages/MainPage.dart';
+import 'package:cook_smart/Pages/RecipesDetailPage/RecipeDetailPage.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -16,13 +17,13 @@ class MyApp extends StatelessWidget {
         path: '/',
         builder: (context, state) => MainPage(),
       ),
-      // GoRoute(
-      //   path: '/recipe/:id',
-      //   builder: (context, state) {
-      //     final id = state.pathParameters['id'];
-      //     return RecipeDetailPage(recipeId: id!);
-      //   },
-      // ),
+      GoRoute(
+        path: '/recipe/:id',
+        builder: (context, state) {
+          final id = state.pathParameters['id'];
+          return RecipeDetailPage();
+        },
+      ),
     ],
   );
 
