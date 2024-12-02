@@ -2,6 +2,8 @@
 
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 
 class IngredientSection extends StatelessWidget {
   IngredientSection({super.key});
@@ -47,11 +49,16 @@ class IngredientSection extends StatelessWidget {
                   "Resep berdasarkan bahan",
                   
                 ),
-                Text(
-                  "Show more",
-                  style: TextStyle(
-                    fontSize: fontSizeSmall,
-                    color: primaryColor,
+                GestureDetector(
+                  onTap: () {
+                    context.push('/ingredient-search');
+                  },
+                  child: Text(
+                    "Show more",
+                    style: TextStyle(
+                      fontSize: fontSizeSmall,
+                      color: primaryColor,
+                    ),
                   ),
                 ),
               ],

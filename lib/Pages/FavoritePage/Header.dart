@@ -11,7 +11,7 @@ class Header extends StatelessWidget {
       child: Text(
         "Resep yang disimpan bisa anda akses secara oflline",
         style: TextStyle(
-            fontSize: fontSizeLarge,
+            fontSize: fontSizeBase,
             fontWeight: FontWeight.w500,
             color: greyColor),
       ),

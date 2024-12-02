@@ -1,5 +1,6 @@
 import 'package:cook_smart/Pages/FavoritePage/FavoritePage.dart';
 import 'package:cook_smart/Pages/HomePage/HomePage.dart';
+import 'package:cook_smart/Pages/MealPlanPage/MealPlanPage.dart';
 import 'package:cook_smart/Pages/ShopingListPage/ShopingListPage.dart';
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class _MainPageState extends State<MainPage> {
     const HomePage(),
     const FavoritePage(),
     const ShopingListPage(),
-    const Text("rencana makan"),
+    const MealPlanPage(),
   ];
 
   final List<String> appBarTitles = [
@@ -30,30 +31,7 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
-
-    final size = MediaQuery.of(context).size;
     return Scaffold(
-      appBar: _currentIndex != 0
-          ? AppBar(
-              backgroundColor: Colors.white,
-              toolbarHeight: size.height * 0.07,
-              title: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 120),
-                child: Text(
-                  appBarTitles[_currentIndex],
-                  style: TextStyle(
-                    fontSize: fontSizeLarge,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w500,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              centerTitle: true,
-              elevation: 1,
-            )
-          : null,
-      backgroundColor: Colors.white,
       body: SafeArea(child: _screens[_currentIndex]),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.grey[50],

@@ -1,3 +1,6 @@
+// ignore_for_file: unused_local_variable
+
+import 'package:cook_smart/Pages/IngredientSearchPage/IngredientSearchPage.dart';
 import 'package:cook_smart/Pages/MainPage.dart';
 import 'package:cook_smart/Pages/RecipesDetailPage/RecipeDetailPage.dart';
 import 'package:flutter/material.dart';
@@ -23,6 +26,10 @@ class MyApp extends StatelessWidget {
               final id = state.pathParameters['id'];
               return RecipeDetailPage();
             },
+          ),
+          GoRoute(
+            path: '/ingredient-search',
+            builder: (context, state) => IngredientSearchPage(),
           ),
         ],
       ),

@@ -1,5 +1,6 @@
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SearchInput extends StatelessWidget {
   const SearchInput({super.key});
@@ -7,6 +8,10 @@ class SearchInput extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return  TextField(
+      cursorColor: greyColor,
+      onSubmitted: (value) {
+        context.push('/ingredient-search');
+      },
       decoration: InputDecoration(
         prefixIcon: Icon(
           Icons.search,
