@@ -7,6 +7,7 @@ environment:
   sdk: '>=3.3.3 <4.0.0'
 
 dependencies:
+  bulleted_list: ^0.0.1+0.1a
   flutter:
     sdk: flutter
   go_router: ^14.6.1
