@@ -10,27 +10,27 @@ void main() {
 
 class MyApp extends StatelessWidget {
   MyApp({super.key});
-  
+
   final _router = GoRouter(
     routes: [
       GoRoute(
         path: '/',
         builder: (context, state) => MainPage(),
-      ),
-      GoRoute(
-        path: '/recipe/:id',
-        builder: (context, state) {
-          final id = state.pathParameters['id'];
-          return RecipeDetailPage();
-        },
+        routes: [
+          GoRoute(
+            path: '/recipe/:id',
+            builder: (context, state) {
+              final id = state.pathParameters['id'];
+              return RecipeDetailPage();
+            },
+          ),
+        ],
       ),
     ],
   );
 
-
   @override
   Widget build(BuildContext context) {
-    
     return MaterialApp.router(
       routerConfig: _router,
       theme: ThemeData(textTheme: GoogleFonts.poppinsTextTheme()),

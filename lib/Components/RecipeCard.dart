@@ -13,7 +13,7 @@ class RecipeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go('/recipe/1');
+        context.push('/recipe/1');
       },
       child: Container(
         decoration: BoxDecoration(

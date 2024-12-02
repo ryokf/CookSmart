@@ -30,11 +30,13 @@ class _MainPageState extends State<MainPage> {
 
   @override
   Widget build(BuildContext context) {
+
+    final size = MediaQuery.of(context).size;
     return Scaffold(
       appBar: _currentIndex != 0
           ? AppBar(
-              backgroundColor: Colors.white10,
-              toolbarHeight: 75,
+              backgroundColor: Colors.white,
+              toolbarHeight: size.height * 0.07,
               title: Padding(
                 padding: const EdgeInsets.symmetric(vertical: 120),
                 child: Text(
