@@ -1,5 +1,3 @@
-// ignore_for_file: file_names
-
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -23,7 +21,7 @@ class IngredientSection extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 12, bottom: 12),
       decoration: BoxDecoration(
-        color: backgroundColor, // Background warna krem
+        color: backgroundColor,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
@@ -36,7 +34,7 @@ class IngredientSection extends StatelessWidget {
               vertical: 12,
             ),
             decoration:  BoxDecoration(
-              color: Colors.grey[200], // Warna header lebih gelap
+              color: Colors.grey[200],
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),
@@ -78,7 +76,7 @@ class IngredientSection extends StatelessWidget {
                 child: Center(child: Text(ingredient)),
               );
             }),
-          ), // Area kosong untuk konten
+          ), 
         ],
       ),
     );
