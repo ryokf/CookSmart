@@ -10,7 +10,7 @@ class SearchInput extends StatelessWidget {
     return  TextField(
       cursorColor: greyColor,
       onSubmitted: (value) {
-        context.push('/ingredient-search');
+        context.push('/search');
       },
       decoration: InputDecoration(
         prefixIcon: Icon(

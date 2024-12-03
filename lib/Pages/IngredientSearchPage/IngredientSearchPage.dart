@@ -57,6 +57,9 @@ class IngredientSearchPage extends StatelessWidget {
                 SizedBox(
                   height: 800,
                   child: GridView.builder(
+                    controller: ScrollController(
+                      keepScrollOffset: true,
+                    ),
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 4,
