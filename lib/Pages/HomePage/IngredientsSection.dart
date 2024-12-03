@@ -7,13 +7,14 @@ class IngredientSection extends StatelessWidget {
   IngredientSection({super.key});
 
   final List<String> ingredients = [
-    'Pasta',
+    'Chicken',
     'Tomato',
-    'Onion',
-    'Garlic',
-    'Spices',
-    'Cheese',
     'Meat',
+    'Cheese',
+    'Garlic',
+    'Onion',
+    'Spices',
+    'Fish',
   ];
 
   @override
@@ -33,7 +34,7 @@ class IngredientSection extends StatelessWidget {
               horizontal: 16,
               vertical: 12,
             ),
-            decoration:  BoxDecoration(
+            decoration: BoxDecoration(
               color: Colors.grey[200],
               borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(12),
@@ -45,7 +46,6 @@ class IngredientSection extends StatelessWidget {
               children: [
                 const Text(
                   "Resep berdasarkan bahan",
-                  
                 ),
                 GestureDetector(
                   onTap: () {
@@ -63,20 +63,44 @@ class IngredientSection extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 200,
-            child: GridView.builder(gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4), itemCount: ingredients.length, itemBuilder: (context, index) {
-              final ingredient = ingredients[index];
-              return Container(
-                margin: const EdgeInsets.all(12),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(largeRounded),
-                  border: Border.all(color: Colors.grey),
-                ),
-                child: Center(child: Text(ingredient)),
-              );
-            }),
-          ), 
+            height: 220,
+            child: GridView.builder(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 0.87, crossAxisCount: 4),
+                itemCount: ingredients.length,
+                itemBuilder: (context, index) {
+                  final ingredient = ingredients[index];
+                  return Container(
+                      margin: const EdgeInsets.all(12),
+                      height: 100,
+                      child: Column(children: [
+                        Container(
+                          padding: const EdgeInsets.all(4),
+                          height: 65,
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(largeRounded),
+                            // border: Border.all(color: Colors.grey),
+                          ),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              image: DecorationImage(
+                                image: AssetImage(
+                                    "assets/ingredients/${++index}.png"),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(height: 2),
+                        Text(
+                          ingredient,
+                          style: TextStyle(
+                            fontSize: fontSizeSmall,
+                          ),
+                        )
+                      ]));
+                }),
+          ),
         ],
       ),
     );

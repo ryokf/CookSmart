@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class SearchInput extends StatelessWidget {
-  const SearchInput({super.key});
-
+  const SearchInput({super.key, this.helperText});
+  final String ? helperText;
   @override
   Widget build(BuildContext context) {
     return  TextField(
@@ -13,6 +13,7 @@ class SearchInput extends StatelessWidget {
         context.push('/search');
       },
       decoration: InputDecoration(
+        helperText: helperText,
         prefixIcon: Icon(
           Icons.search,
           color: greyColor, // Menggunakan warna dari theme

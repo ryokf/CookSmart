@@ -47,7 +47,7 @@ class IngredientSearchPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const SearchInput(),
+                const SearchInput(helperText: "pisahkan setiap bahan dengan koma",),
                 const Padding(
                   padding: EdgeInsets.only(top: 24),
                   child: Text(
