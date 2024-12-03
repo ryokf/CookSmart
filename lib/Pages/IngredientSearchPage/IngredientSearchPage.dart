@@ -9,83 +9,99 @@ class IngredientSearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final List<String> ingredients = [
-      'Pasta',
-      'Tomato',
-      'Onion',
-      'Garlic',
-      'Spices',
-      'Cheese',
-      'Meat',
-      'Pasta',
-      'Tomato',
-      'Onion',
-      'Garlic',
-      'Onion',
-      'Garlic',
-      'Spices',
-      'Cheese',
-      'Meat',
-    ];
+    'Chicken',
+    'Tomato',
+    'Meat',
+    'Cheese',
+    'Garlic',
+    'Onion',
+    'Spices',
+    'Fish',
+    'Noodle',
+    'Banana',
+    'Chocolate',
+    'Egg',
+  ];
 
     final size = MediaQuery.of(context).size;
 
     return Scaffold(
         body: NestedScrollView(
-        headerSliverBuilder: (context, innerBoxIsScrolled) {
-          return [
-            TitleBar(
-              size: size,
-              innerBoxIsScrolled: innerBoxIsScrolled,
-              title: innerBoxIsScrolled ? "Search Based on Ingredients" : "Search Based on \n Ingredients",
-            )
-          ];
-        },
-        
-        body: SingleChildScrollView(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24.0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SearchInput(helperText: "pisahkan setiap bahan dengan koma",),
-                const Padding(
-                  padding: EdgeInsets.only(top: 24),
-                  child: Text(
-                    "Bahan yang sering digunakan",
-                  ),
+      headerSliverBuilder: (context, innerBoxIsScrolled) {
+        return [
+          TitleBar(
+            size: size,
+            innerBoxIsScrolled: innerBoxIsScrolled,
+            title: innerBoxIsScrolled
+                ? "Search Based on Ingredients"
+                : "Search Based on \n Ingredients",
+          )
+        ];
+      },
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SearchInput(
+                helperText: "pisahkan setiap bahan dengan koma",
+              ),
+              const Padding(
+                padding: EdgeInsets.only(top: 24),
+                child: Text(
+                  "Bahan yang sering digunakan",
                 ),
-                SizedBox(
-                  height: 800,
-                  child: GridView.builder(
-                    controller: ScrollController(
-                      keepScrollOffset: true,
-                    ),
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 16,
-                    ),
-                    itemCount: ingredients.length,
-                    itemBuilder: (context, index) {
-                      final ingredient = ingredients[index];
-                      return Container(
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(largeRounded),
-                          border: Border.all(color: Colors.grey),
-                        ),
-                        child: Center(
-                          child: Text(ingredient),
-                        ),
-                      );
-                    },
+              ),
+              SizedBox(
+                height: 800,
+                child: GridView.builder(
+                  controller: ScrollController(
+                    keepScrollOffset: true,
                   ),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    childAspectRatio: 0.8,
+                  ),
+                  itemCount: ingredients.length,
+                  itemBuilder: (context, index) {
+                    final ingredient = ingredients[index];
+                    return Container(
+                        margin: const EdgeInsets.symmetric(horizontal: 12),
+                        height: 100,
+                        child: Column(children: [
+                          Container(
+                            padding: const EdgeInsets.all(4),
+                            height: 65,
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(largeRounded),
+                              border: Border.all(color: Colors.grey),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      "assets/ingredients/${++index}.png"),
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(height: 2),
+                          Text(
+                            ingredient,
+                            style: TextStyle(
+                              fontSize: fontSizeSmall,
+                            ),
+                          )
+                        ]));
+                  },
                 ),
-              ],
-            ),
+              ),
+            ],
           ),
-        ),));
+        ),
+      ),
+    ));
   }
 }
-
