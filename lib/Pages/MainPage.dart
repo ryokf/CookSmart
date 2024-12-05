@@ -34,7 +34,7 @@ class _MainPageState extends State<MainPage> {
     return Scaffold(
       body: SafeArea(child: _screens[_currentIndex]),
       bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.grey[50],
+        backgroundColor: Colors.grey[100],
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {

@@ -7,13 +7,17 @@ import 'package:go_router/go_router.dart';
 
 
 class RecipeCard extends StatelessWidget {
-  const RecipeCard({super.key});
+  const RecipeCard({super.key, required this.id, required this.imageUrl, required this.title});
+
+  final int id;
+  final String imageUrl;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.push('/recipe/1');
+        context.push('/recipe/$id');
       },
       child: Container(
         decoration: BoxDecoration(
@@ -25,7 +29,7 @@ class RecipeCard extends StatelessWidget {
             ),
           ],
           color: Colors.white,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(mediumRounded),
         ),
         // margin: const EdgeInsets.only(right: 12),
         width: 180,
@@ -39,7 +43,7 @@ class RecipeCard extends StatelessWidget {
                 topRight: Radius.circular(12),
               ),
               child: Image.network(
-                'https://images.unsplash.com/photo-1617825013838-0c4109a96aca?q=80&w=2128&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D', // Ganti dengan URL gambar asli
+                imageUrl,
                 height: 120,
                 width: double.infinity,
                 fit: BoxFit.cover,
@@ -48,9 +52,9 @@ class RecipeCard extends StatelessWidget {
             Padding(
               padding: const EdgeInsets.all(8.0),
               child: Text(
-                'Farfalle with Peas, Ham and Cream',
+                title,
                 style:  TextStyle(
-                  fontSize: fontSizeBase,
+                  fontSize: fontSizeSmall,
                   color: Colors.black,
                 ),
                 maxLines: 2,

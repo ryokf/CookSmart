@@ -29,7 +29,7 @@ class FavoriteList extends StatelessWidget {
           ),
           itemCount: ingredients.length,
           itemBuilder: (context, index) {
-            return const RecipeCard();
+            // return const RecipeCard();
           }),
     );
   }

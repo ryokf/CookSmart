@@ -24,8 +24,8 @@ class MyApp extends StatelessWidget {
           GoRoute(
             path: '/recipe/:id',
             builder: (context, state) {
-              final id = state.pathParameters['id'];
-              return RecipeDetailPage();
+              final id = state.pathParameters['id']!;
+              return RecipeDetailPage(recipeId: id,);
             },
           ),
           GoRoute(

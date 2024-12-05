@@ -123,7 +123,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
                   ),
                   itemCount: ingredients.length,
                   itemBuilder: (context, index) {
-                    return const RecipeCard();
+                    // return const RecipeCard();
                   }),
             )
           ],

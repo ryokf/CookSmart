@@ -3,7 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class Header extends StatefulWidget {
-  const Header({super.key});
+  const Header({super.key, required this.title, required this.imageUrl, required this.description});
+  final String title;
+  final String imageUrl;
+  final String description;
 
   @override
   State<Header> createState() => _HeaderState();
@@ -17,7 +20,7 @@ class _HeaderState extends State<Header> {
     return Stack(
       children: [
         Image.network(
-          "https://images.immediate.co.uk/production/volatile/sites/30/2022/08/Corndogs-7832ef6.jpg?quality=90&resize=556,505",
+          widget.imageUrl,
           width: double.infinity,
           height: size * 0.4,
           fit: BoxFit.cover,
@@ -43,7 +46,7 @@ class _HeaderState extends State<Header> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs",
+                  widget.title,
                   style: TextStyle(
                     fontSize: fontSizeLarge + 2,
                     color: Colors.white,
@@ -52,7 +55,7 @@ class _HeaderState extends State<Header> {
                 ),
                 const SizedBox(height: 8),
                 Text(
-                  "You can never have too many main course recipes, so give Pasta with Garlic, Scallions, Cauliflower & Breadcrumbs a try.",
+                  widget.description,
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: fontSizeSmall,
