@@ -56,13 +56,13 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
       var data = jsonDecode(response.body);
       return data[0]["steps"];
     }
-     
+
     return Scaffold(
       body: FutureBuilder(
         future: detailRecipe(),
         builder: (context, snapshot) {
           if (snapshot.hasData) {
-            // print(snapshot.data["nutrition"]!["nutrients"][0]["amount"]);
+            print(snapshot.data['id']);
             return SafeArea(
               child: SingleChildScrollView(
                 child: Column(
@@ -110,14 +110,14 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
                       ],
                     ),
                     SizedBox(
-                      height: 800,
+                      height: 750,
                       child: TabBarView(
                         controller: _tabController,
                         children: [
                           Center(child: Ingridients(ingredientsData: snapshot.data["extendedIngredients"])),
                           Instructions(instructionData: recipeInstructions(),),
-                          Center(child: Nutrition()),
-                          Center(child: Info()),
+                          Nutrition(nutritionData: snapshot.data["nutrition"]!["nutrients"],),
+                          Info(additionalInfo: snapshot.data["nutrition"]["properties"],),
                         ],
                       ),
                     )

@@ -33,24 +33,26 @@ class Instructions extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(
-                    height: 800,
-                    child: ListView.builder(
-                        itemCount: snapshot.data.length,
-                        itemBuilder: (context, index) {
-                          print(snapshot.data[index]["step"]);
-                          return Padding(
-                            padding: const EdgeInsets.only(bottom: 16.0),
-                            child: Text(
-                              "${index + 1}. ${snapshot.data[index]["step"]}",
-                              style: TextStyle(
-                                fontSize: fontSizeBase,
-                                fontWeight: FontWeight.w400,
-                                color: blackColor,
+                  SingleChildScrollView(
+                    child: SizedBox(
+                      height: 700,
+                      child: ListView.builder(
+                          itemCount: snapshot.data.length,
+                          itemBuilder: (context, index) {
+                            print(snapshot.data[index]["step"]);
+                            return Padding(
+                              padding: const EdgeInsets.only(bottom: 16.0),
+                              child: Text(
+                                "${index + 1}. ${snapshot.data[index]["step"]}",
+                                style: TextStyle(
+                                  fontSize: fontSizeBase,
+                                  fontWeight: FontWeight.w400,
+                                  color: blackColor,
+                                ),
                               ),
-                            ),
-                          );
-                        }),
+                            );
+                          }),
+                    ),
                   ),
                   // BulletedList(
                   //   listOrder: ListOrder.ordered,
