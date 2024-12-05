@@ -10,7 +10,6 @@ class Ingridients extends StatelessWidget {
   final ingredientsData;
   @override
   Widget build(BuildContext context) {
-    print(ingredientsData);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24.0),
       child: Column(

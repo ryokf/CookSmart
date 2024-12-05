@@ -47,8 +47,16 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
       return data;
     }
 
-    detailRecipe();
-
+    Future recipeInstructions() async {
+      var getData = Uri.https(
+          api_url,
+          "/recipes/${widget.recipeId}/analyzedInstructions",
+          {"stepBreakdown": "true"});
+      var response = await http.get(getData, headers: {"x-api-key": api_key});
+      var data = jsonDecode(response.body);
+      return data[0]["steps"];
+    }
+     
     return Scaffold(
       body: FutureBuilder(
         future: detailRecipe(),
@@ -107,7 +115,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
                         controller: _tabController,
                         children: [
                           Center(child: Ingridients(ingredientsData: snapshot.data["extendedIngredients"])),
-                          Center(child: Instructions()),
+                          Instructions(instructionData: recipeInstructions(),),
                           Center(child: Nutrition()),
                           Center(child: Info()),
                         ],
