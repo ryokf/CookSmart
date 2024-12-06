@@ -2,6 +2,7 @@ import 'package:cook_smart/Components/SearchInput.dart';
 import 'package:cook_smart/Components/TitleBar.dart';
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class IngredientSearchPage extends StatelessWidget {
   const IngredientSearchPage({super.key});
@@ -46,6 +47,9 @@ class IngredientSearchPage extends StatelessWidget {
             children: [
               SearchInput(
                 helperText: "pisahkan setiap bahan dengan koma",
+                onSubmitted: (value){
+                  context.push('/ingredient-search/$value');
+                }, 
               ),
               const Padding(
                 padding: EdgeInsets.only(top: 24),
@@ -66,35 +70,40 @@ class IngredientSearchPage extends StatelessWidget {
                   itemCount: ingredients.length,
                   itemBuilder: (context, index) {
                     final ingredient = ingredients[index];
-                    return Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 12),
-                        height: 100,
-                        child: Column(children: [
-                          Container(
-                            padding: const EdgeInsets.all(4),
-                            height: 65,
-                            decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(largeRounded),
-                              border: Border.all(color: Colors.grey),
-                            ),
-                            child: Container(
+                    return GestureDetector(
+                      onTap: () {
+                        context.push('/ingredient-search/$ingredient');
+                      },
+                      child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 12),
+                          height: 100,
+                          child: Column(children: [
+                            Container(
+                              padding: const EdgeInsets.all(4),
+                              height: 65,
                               decoration: BoxDecoration(
-                                image: DecorationImage(
-                                  image: AssetImage(
-                                      "assets/ingredients/${++index}.png"),
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(largeRounded),
+                                border: Border.all(color: Colors.grey),
+                              ),
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  image: DecorationImage(
+                                    image: AssetImage(
+                                        "assets/ingredients/${++index}.png"),
+                                  ),
                                 ),
                               ),
                             ),
-                          ),
-                          SizedBox(height: 2),
-                          Text(
-                            ingredient,
-                            style: TextStyle(
-                              fontSize: fontSizeSmall,
-                            ),
-                          )
-                        ]));
+                            SizedBox(height: 2),
+                            Text(
+                              ingredient,
+                              style: TextStyle(
+                                fontSize: fontSizeSmall,
+                              ),
+                            )
+                          ])),
+                    );
                   },
                 ),
               ),

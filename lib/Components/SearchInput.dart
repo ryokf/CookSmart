@@ -3,34 +3,33 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class SearchInput extends StatelessWidget {
-  SearchInput({super.key, this.helperText});
-  final String ? helperText;
+  SearchInput({super.key, this.helperText, required this.onSubmitted});
+  final String? helperText;
+  final void Function(String) onSubmitted;
+
 
   @override
   Widget build(BuildContext context) {
-    return  TextField(
+    return TextField(
       cursorColor: greyColor,
-      onSubmitted: (value) {
-        context.push('/search/$value');
-      },
+      onSubmitted: onSubmitted,
       decoration: InputDecoration(
         helperText: helperText,
         prefixIcon: Icon(
           Icons.search,
-          color: greyColor, // Menggunakan warna dari theme
+          color: greyColor,
         ),
         hintText: 'Cari resep',
         hintStyle: TextStyle(
-          color: greyColor, // Warna placeholder
-          fontSize: fontSizeLarge, // Ukuran font (dari theme)
+          color: greyColor,
+          fontSize: fontSizeLarge,
           fontWeight: regular,
         ),
         filled: true,
-        fillColor: Colors.grey[100], // Warna background input
+        fillColor: Colors.grey[100],
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(mediumRounded), // Radius sudut
+          borderRadius: BorderRadius.circular(mediumRounded),
           borderSide: BorderSide.none,
-           // Tanpa border
         ),
         contentPadding: const EdgeInsets.symmetric(
           vertical: 12.0,

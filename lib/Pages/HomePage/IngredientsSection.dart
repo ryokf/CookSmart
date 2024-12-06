@@ -70,35 +70,40 @@ class IngredientSection extends StatelessWidget {
                 itemCount: ingredients.length,
                 itemBuilder: (context, index) {
                   final ingredient = ingredients[index];
-                  return Container(
-                      margin: const EdgeInsets.all(12),
-                      height: 100,
-                      child: Column(children: [
-                        Container(
-                          padding: const EdgeInsets.all(4),
-                          height: 65,
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(largeRounded),
-                            // border: Border.all(color: Colors.grey),
-                          ),
-                          child: Container(
+                  return GestureDetector(
+                    onTap: () {
+                      context.push('/ingredient-search/$ingredient');
+                    },
+                    child: Container(
+                        margin: const EdgeInsets.all(12),
+                        height: 100,
+                        child: Column(children: [
+                          Container(
+                            padding: const EdgeInsets.all(4),
+                            height: 65,
                             decoration: BoxDecoration(
-                              image: DecorationImage(
-                                image: AssetImage(
-                                    "assets/ingredients/${++index}.png"),
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(largeRounded),
+                              // border: Border.all(color: Colors.grey),
+                            ),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                image: DecorationImage(
+                                  image: AssetImage(
+                                      "assets/ingredients/${++index}.png"),
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                        SizedBox(height: 2),
-                        Text(
-                          ingredient,
-                          style: TextStyle(
-                            fontSize: fontSizeSmall,
-                          ),
-                        )
-                      ]));
+                          SizedBox(height: 2),
+                          Text(
+                            ingredient,
+                            style: TextStyle(
+                              fontSize: fontSizeSmall,
+                            ),
+                          )
+                        ])),
+                  );
                 }),
           ),
         ],

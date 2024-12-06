@@ -10,12 +10,11 @@ import 'package:cook_smart/Pages/HomePage/RecipesSection.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:go_router/go_router.dart';
 import 'package:http/http.dart' as http;
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -44,7 +43,11 @@ class HomePage extends StatelessWidget {
             const Header(),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 12),
-              child: SearchInput(),
+              child: SearchInput(
+                onSubmitted: (value) {
+                  context.push('/search/$value/Preferensi Diet');
+                },
+              ),
             ),
             IngredientSection(),
             RecipesSection(

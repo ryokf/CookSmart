@@ -1,6 +1,7 @@
 // ignore_for_file: unused_local_variable
 
 import 'package:cook_smart/Pages/IngredientSearchPage/IngredientSearchPage.dart';
+import 'package:cook_smart/Pages/IngredientSearchPage/Result.dart';
 import 'package:cook_smart/Pages/MainPage.dart';
 import 'package:cook_smart/Pages/RecipesDetailPage/RecipeDetailPage.dart';
 import 'package:cook_smart/Pages/SearchResultPage/SearchResultPage.dart';
@@ -31,12 +32,22 @@ class MyApp extends StatelessWidget {
           GoRoute(
             path: '/ingredient-search',
             builder: (context, state) => IngredientSearchPage(),
+            routes: [
+              GoRoute(
+                path: ':query',
+                builder: (context, state) {
+                  final query = state.pathParameters['query']!;
+                  return SearchIngredientsResultPage(query: query,);
+                },
+              ),
+            ]
           ),
           GoRoute(
-            path: '/search/:query',
+            path: '/search/:query/:diet',
             builder: (context, state) {
               final query = state.pathParameters['query']!;
-              return SearchResultPage(query: query,);
+              final diet = state.pathParameters['diet'] ?? "";
+              return SearchResultPage(query: query, diet: diet,);
             },
           ),
         ],
