@@ -1,4 +1,3 @@
-import 'package:bulleted_list/bulleted_list.dart';
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
 
@@ -12,7 +11,7 @@ class Instructions extends StatelessWidget {
       future: instructionData,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
         if (snapshot.hasData) {
           return SingleChildScrollView(
@@ -39,7 +38,6 @@ class Instructions extends StatelessWidget {
                       child: ListView.builder(
                           itemCount: snapshot.data.length,
                           itemBuilder: (context, index) {
-                            print(snapshot.data[index]["step"]);
                             return Padding(
                               padding: const EdgeInsets.only(bottom: 16.0),
                               child: Text(

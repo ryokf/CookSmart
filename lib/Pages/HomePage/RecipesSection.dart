@@ -1,9 +1,5 @@
 // ignore_for_file: file_names
-
-import 'dart:convert';
-
 import 'package:cook_smart/Components/RecipeCard.dart';
-import 'package:cook_smart/Config/api.dart';
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
 

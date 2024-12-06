@@ -15,6 +15,8 @@ import 'package:http/http.dart' as http;
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
+  
+
   @override
   Widget build(BuildContext context) {
     Future popularRecipe() async {
@@ -40,7 +42,7 @@ class HomePage extends StatelessWidget {
         child: Column(
           children: [
             const Header(),
-            const Padding(
+            Padding(
               padding: EdgeInsets.symmetric(vertical: 12),
               child: SearchInput(),
             ),

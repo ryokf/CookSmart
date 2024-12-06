@@ -33,8 +33,11 @@ class MyApp extends StatelessWidget {
             builder: (context, state) => IngredientSearchPage(),
           ),
           GoRoute(
-            path: '/search',
-            builder: (context, state) => SearchResultPage(),
+            path: '/search/:query',
+            builder: (context, state) {
+              final query = state.pathParameters['query']!;
+              return SearchResultPage(query: query,);
+            },
           ),
         ],
       ),

@@ -3,14 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class SearchInput extends StatelessWidget {
-  const SearchInput({super.key, this.helperText});
+  SearchInput({super.key, this.helperText});
   final String ? helperText;
+
   @override
   Widget build(BuildContext context) {
     return  TextField(
       cursorColor: greyColor,
       onSubmitted: (value) {
-        context.push('/search');
+        context.push('/search/$value');
       },
       decoration: InputDecoration(
         helperText: helperText,

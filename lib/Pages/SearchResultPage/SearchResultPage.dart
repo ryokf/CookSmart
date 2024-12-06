@@ -1,10 +1,15 @@
+import 'dart:convert';
+
 import 'package:cook_smart/Components/RecipeCard.dart';
 import 'package:cook_smart/Components/SearchInput.dart';
+import 'package:cook_smart/Config/api.dart';
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
+import 'package:http/http.dart' as http;
 
 class SearchResultPage extends StatefulWidget {
-  const SearchResultPage({super.key});
+  const SearchResultPage({super.key, required this.query});
+  final String query;
 
   @override
   State<SearchResultPage> createState() => _SearchResultPageState();
@@ -13,24 +18,14 @@ class SearchResultPage extends StatefulWidget {
 class _SearchResultPageState extends State<SearchResultPage> {
   @override
   Widget build(BuildContext context) {
-    final List<String> ingredients = [
-      'Pasta',
-      'Tomato',
-      'Onion',
-      'Garlic',
-      'Spices',
-      'Cheese',
-      'Meat',
-      'Pasta',
-      'Tomato',
-      'Onion',
-      'Garlic',
-      'Spices',
-      'Cheese',
-      'Meat',
-    ];
 
-    var ingredient = 'Pasta';
+    Future recipeData() async {
+      var getData = Uri.https(api_url, "/recipes/complexSearch",
+          {"query": widget.query});
+      var response = await http.get(getData, headers: {"x-api-key": api_key});
+      var data = jsonDecode(response.body);
+      return data["results"];
+    }
 
     return Scaffold(
       backgroundColor: Colors.white,
@@ -58,12 +53,12 @@ class _SearchResultPageState extends State<SearchResultPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SearchInput(),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               height: 35,
-                padding: EdgeInsets.symmetric(horizontal: 12),
+                padding: const EdgeInsets.symmetric(horizontal: 12),
                 decoration: BoxDecoration(
                   color: Colors.orange.shade50,
                   borderRadius: BorderRadius.circular(8),
@@ -106,25 +101,34 @@ class _SearchResultPageState extends State<SearchResultPage> {
                   ],
                   onChanged: (value) {},
                 )),
-            SizedBox(
+            const SizedBox(
               height: 12,
             ),
             Container(
               margin: const EdgeInsets.only(top: 12),
-              height: 800,
-              child: GridView.builder(
-                  controller: ScrollController(
-                    keepScrollOffset: true,
-                  ),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    mainAxisSpacing: 16,
-                    crossAxisSpacing: 16,
-                  ),
-                  itemCount: ingredients.length,
-                  itemBuilder: (context, index) {
-                    // return const RecipeCard();
-                  }),
+              height: 700,
+              child: FutureBuilder(
+                future: recipeData(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return GridView.builder(
+                        controller: ScrollController(
+                          keepScrollOffset: true,
+                        ),
+                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 16,
+                          crossAxisSpacing: 16,
+                        ),
+                        itemCount: snapshot.data!.length,
+                        itemBuilder: (context, index) {
+                          return RecipeCard(id: snapshot.data![index]["id"], imageUrl: snapshot.data![index]["image"], title: snapshot.data![index]["title"],);
+                        });
+                  } else {
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                },
+              ),
             )
           ],
         )),

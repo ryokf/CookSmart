@@ -1,4 +1,3 @@
-import 'package:cook_smart/Components/RecipeCard.dart';
 import 'package:flutter/cupertino.dart';
 
 class FavoriteList extends StatelessWidget {

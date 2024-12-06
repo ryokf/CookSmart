@@ -10,7 +10,7 @@ class Nutrition extends StatelessWidget {
     return SingleChildScrollView(
       child: Container(
         width: double.infinity,
-        height: 400,
+        height: 800,
         padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 20),
         child: ListView.builder(
           itemCount: nutritionData.length,
