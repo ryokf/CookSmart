@@ -3,10 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
 class Header extends StatefulWidget {
-  const Header({super.key, required this.title, required this.imageUrl, required this.description});
+  const Header({super.key, required this.title, required this.imageUrl, required this.description, required this.onPress});
   final String title;
   final String imageUrl;
   final String description;
+  final VoidCallback onPress;
 
   @override
   State<Header> createState() => _HeaderState();
@@ -69,23 +70,24 @@ class _HeaderState extends State<Header> {
         Positioned(
           top: 20,
           right: 20,
-          child: Container(
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: Colors.black.withOpacity(0.5),
+              
             ),
-            child: IconButton(
-              icon: Icon(
-                isFavorite ? Icons.favorite : Icons.favorite_border,
-                color: Colors.red,
-                size: 32,
+            // icon: Icon(
+            //   isFavorite ? Icons.favorite : Icons.favorite_border,
+            //   color: Colors.red,
+            //   size: 32,
+            // ),
+            child: Text(
+              "simpan resep",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: fontSizeBase,
               ),
-              onPressed: () {
-                setState(() {
-                  isFavorite = !isFavorite;
-                });
-              },
             ),
+            onPressed: widget.onPress,
           ),
         ),
         Positioned(

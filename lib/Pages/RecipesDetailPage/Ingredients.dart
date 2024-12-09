@@ -52,7 +52,7 @@ class Ingridients extends StatelessWidget {
                             color: blackColor,
                           ),
                         ),
-                        Text(ingredientsData[index]["nameClean"], style: TextStyle(
+                        Text(ingredientsData[index]["nameClean"]??ingredientsData[index]["name"], style: TextStyle(
                           fontSize: fontSizeLarge,
                           fontWeight: FontWeight.w500,
                           color: blackColor,

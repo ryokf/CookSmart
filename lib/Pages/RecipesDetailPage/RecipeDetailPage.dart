@@ -8,6 +8,7 @@ import 'package:cook_smart/Pages/RecipesDetailPage/Ingredients.dart';
 import 'package:cook_smart/Pages/RecipesDetailPage/Instructions.dart';
 import 'package:cook_smart/Pages/RecipesDetailPage/Nutritions.dart';
 import 'package:cook_smart/Themes/themes.dart';
+import 'package:cook_smart/helper/DatabaseHelper.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 
@@ -34,6 +35,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
     _tabController.dispose();
     super.dispose();
   }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -73,21 +75,41 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
                       title: snapshot.data["title"],
                       imageUrl: snapshot.data["image"],
                       description: snapshot.data["summary"].split(".")[0],
+                      onPress: () async {
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('sedang menyimpan...')),
+                          );
+                          final recipeData = {
+                            'id': snapshot.data['id'].toString(),
+                            'title': snapshot.data['title'],
+                            'imageUrl': snapshot.data['image'],
+                            'summary': snapshot.data['summary'],
+                            'timeCooking': snapshot.data['readyInMinutes'],
+                            'calories': snapshot.data['nutrition']['nutrients']
+                                [0]['amount'],
+                            'healthScore': snapshot.data['healthScore'],
+                            'ingredients': jsonEncode(snapshot
+                                .data['extendedIngredients']
+                                .map((ingredient) => ingredient['original'])
+                                .toList()),
+                            'steps': jsonEncode((await recipeInstructions())
+                                .map((step) => step['step'])
+                                .toList()),
+                          };
+                          await DatabaseHelper.instance.insertRecipe(recipeData);
+                          ScaffoldMessenger.of(context).showSnackBar(
+                            const SnackBar(
+                                content: Text('Resep berhasil disimpan!')),
+                          );
+                        },
                     ),
                     InfoSection(
                       timeCooking: snapshot.data["readyInMinutes"],
-                      calories: snapshot.data["nutrition"]["nutrients"][0]["amount"],
+                      calories: snapshot.data["nutrition"]["nutrients"][0]
+                          ["amount"],
                       healthScore: snapshot.data["healthScore"],
                     ),
-                    // Center(
-                    //   child: SizedBox(
-                    //     width: MediaQuery.of(context).size.width * 0.2,
-                    //     child: Divider(
-                    //       thickness: 4,
-                    //       color: greyColor
-                    //     ),
-                    //   ),
-                    // ),
                     TabBar(
                       // indicatorPadding: EdgeInsets.only(top: 100),
                       controller: _tabController,
@@ -114,10 +136,21 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
                       child: TabBarView(
                         controller: _tabController,
                         children: [
-                          Center(child: Ingridients(ingredientsData: snapshot.data["extendedIngredients"])),
-                          Instructions(instructionData: recipeInstructions(),),
-                          Nutrition(nutritionData: snapshot.data["nutrition"]!["nutrients"],),
-                          Info(additionalInfo: snapshot.data["nutrition"]["properties"],),
+                          Center(
+                              child: Ingridients(
+                                  ingredientsData:
+                                      snapshot.data["extendedIngredients"])),
+                          Instructions(
+                            instructionData: recipeInstructions(),
+                          ),
+                          Nutrition(
+                            nutritionData:
+                                snapshot.data["nutrition"]!["nutrients"],
+                          ),
+                          Info(
+                            additionalInfo: snapshot.data["nutrition"]
+                                ["properties"],
+                          ),
                         ],
                       ),
                     )

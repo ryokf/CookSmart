@@ -128,6 +128,9 @@ class _SearchResultPageState extends State<SearchResultPage> {
                             id: snapshot.data![index]["id"],
                             imageUrl: snapshot.data![index]["image"],
                             title: snapshot.data![index]["title"],
+                            onTap: () {
+                              context.push('/recipe/${snapshot.data[index]["id"]}');
+                            },
                           );
                         },
                       ),

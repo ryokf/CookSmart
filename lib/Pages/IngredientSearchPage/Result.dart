@@ -19,12 +19,11 @@ class SearchIngredientsResultPage extends StatefulWidget {
 class _SearchResultPageState extends State<SearchIngredientsResultPage> {
   @override
   Widget build(BuildContext context) {
-
     String ingredients = widget.query;
 
     Future recipeData() async {
-      var getData = Uri.https(api_url, "/recipes/findByIngredients",
-          {"ingredients": ingredients});
+      var getData = Uri.https(
+          api_url, "/recipes/findByIngredients", {"ingredients": ingredients});
       var response = await http.get(getData, headers: {"x-api-key": api_key});
       var data = jsonDecode(response.body);
       return data;
@@ -56,11 +55,11 @@ class _SearchResultPageState extends State<SearchIngredientsResultPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SearchInput(
-                helperText: "pisahkan setiap bahan dengan koma",
-                onSubmitted: (value){
-                  context.push('/ingredient-search/$value');
-                }, 
-              ),
+              helperText: "pisahkan setiap bahan dengan koma",
+              onSubmitted: (value) {
+                context.push('/ingredient-search/$value');
+              },
+            ),
             const SizedBox(
               height: 12,
             ),
@@ -123,14 +122,22 @@ class _SearchResultPageState extends State<SearchIngredientsResultPage> {
                         controller: ScrollController(
                           keepScrollOffset: true,
                         ),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        gridDelegate:
+                            const SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: 2,
                           mainAxisSpacing: 16,
                           crossAxisSpacing: 16,
                         ),
                         itemCount: snapshot.data!.length,
                         itemBuilder: (context, index) {
-                          return RecipeCard(id: snapshot.data![index]["id"], imageUrl: snapshot.data![index]["image"], title: snapshot.data![index]["title"],);
+                          return RecipeCard(
+                            id: snapshot.data![index]["id"],
+                            imageUrl: snapshot.data![index]["image"],
+                            title: snapshot.data![index]["title"],
+                            onTap: () {
+                              context.push('/recipe/${snapshot.data[index]["id"]}');
+                            },
+                          );
                         });
                   } else {
                     return const Center(child: CircularProgressIndicator());

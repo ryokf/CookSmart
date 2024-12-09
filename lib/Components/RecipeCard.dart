@@ -7,18 +7,17 @@ import 'package:go_router/go_router.dart';
 
 
 class RecipeCard extends StatelessWidget {
-  const RecipeCard({super.key, required this.id, required this.imageUrl, required this.title});
+  const RecipeCard({super.key, required this.id, required this.imageUrl, required this.title, required this.onTap});
 
   final int id;
   final String imageUrl;
   final String title;
+  final VoidCallback onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {
-        context.push('/recipe/$id');
-      },
+      onTap: onTap,
       child: Container(
         decoration: BoxDecoration(
           boxShadow: [

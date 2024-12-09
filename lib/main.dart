@@ -1,5 +1,6 @@
 // ignore_for_file: unused_local_variable
 
+import 'package:cook_smart/Pages/FavoritePage/DetailRecipe.dart';
 import 'package:cook_smart/Pages/IngredientSearchPage/IngredientSearchPage.dart';
 import 'package:cook_smart/Pages/IngredientSearchPage/Result.dart';
 import 'package:cook_smart/Pages/MainPage.dart';
@@ -8,8 +9,17 @@ import 'package:cook_smart/Pages/SearchResultPage/SearchResultPage.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:flutter/foundation.dart'; // Untuk mengecek platform
+import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
+  if (!kIsWeb && (defaultTargetPlatform == TargetPlatform.windows || 
+      defaultTargetPlatform == TargetPlatform.macOS || 
+      defaultTargetPlatform == TargetPlatform.linux)) {
+    // Inisialisasi sqflite_common_ffi untuk desktop
+    sqfliteFfiInit();
+    databaseFactory = databaseFactoryFfi;
+  }
   runApp(MyApp());
 }
 
