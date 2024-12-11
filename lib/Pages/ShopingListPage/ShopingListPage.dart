@@ -25,11 +25,11 @@ class ShopingListPage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
                 Section(
-                  state: true,
+                  state: false,
                 ),
                 const Divider(),
                 Section(
-                  state: false,
+                  state: true,
                 ),
               ],
             ),

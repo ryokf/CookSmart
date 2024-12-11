@@ -6,7 +6,8 @@ import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
 
 class MainPage extends StatefulWidget {
-  const MainPage({super.key});
+  const MainPage({super.key, this.indexPage = 0});
+  final int indexPage;
 
   @override
   State<MainPage> createState() => _MainPageState();
@@ -38,7 +39,11 @@ class _MainPageState extends State<MainPage> {
         currentIndex: _currentIndex,
         onTap: (index) {
           setState(() {
-            _currentIndex = index;
+            if (widget.indexPage != 0) {
+              _currentIndex = widget.indexPage;
+            }else {
+              _currentIndex = index;
+            }
           });
         },
         items: const [

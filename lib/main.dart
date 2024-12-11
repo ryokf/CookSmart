@@ -13,9 +13,10 @@ import 'package:flutter/foundation.dart'; // Untuk mengecek platform
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
-  if (!kIsWeb && (defaultTargetPlatform == TargetPlatform.windows || 
-      defaultTargetPlatform == TargetPlatform.macOS || 
-      defaultTargetPlatform == TargetPlatform.linux)) {
+  if (!kIsWeb &&
+      (defaultTargetPlatform == TargetPlatform.windows ||
+          defaultTargetPlatform == TargetPlatform.macOS ||
+          defaultTargetPlatform == TargetPlatform.linux)) {
     // Inisialisasi sqflite_common_ffi untuk desktop
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
@@ -33,31 +34,46 @@ class MyApp extends StatelessWidget {
         builder: (context, state) => MainPage(),
         routes: [
           GoRoute(
-            path: '/recipe/:id',
+            path: '/:pageIndex',
             builder: (context, state) {
-              final id = state.pathParameters['id']!;
-              return RecipeDetailPage(recipeId: id,);
+              final pageIndex = int.parse(state.pathParameters['pageIndex']!);
+              return MainPage(
+                indexPage: pageIndex,
+              );
             },
           ),
           GoRoute(
-            path: '/ingredient-search',
-            builder: (context, state) => IngredientSearchPage(),
-            routes: [
-              GoRoute(
-                path: ':query',
-                builder: (context, state) {
-                  final query = state.pathParameters['query']!;
-                  return SearchIngredientsResultPage(query: query,);
-                },
-              ),
-            ]
+            path: '/recipe/:id',
+            builder: (context, state) {
+              final id = state.pathParameters['id']!;
+              return RecipeDetailPage(
+                recipeId: id,
+              );
+            },
           ),
+          GoRoute(
+              path: '/ingredient-search',
+              builder: (context, state) => IngredientSearchPage(),
+              routes: [
+                GoRoute(
+                  path: ':query',
+                  builder: (context, state) {
+                    final query = state.pathParameters['query']!;
+                    return SearchIngredientsResultPage(
+                      query: query,
+                    );
+                  },
+                ),
+              ]),
           GoRoute(
             path: '/search/:query/:diet',
             builder: (context, state) {
               final query = state.pathParameters['query']!;
               final diet = state.pathParameters['diet'] ?? "";
-              return SearchResultPage(query: query, diet: diet,);
+              return SearchResultPage(
+                query: query,
+                diet: diet,
+              );
             },
           ),
         ],

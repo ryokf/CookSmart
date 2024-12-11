@@ -72,7 +72,7 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Header(
-                      title: snapshot.data["title"],
+                      title: snapshot.data["title"]!,
                       imageUrl: snapshot.data["image"],
                       description: snapshot.data["summary"].split(".")[0],
                       onPress: () async {

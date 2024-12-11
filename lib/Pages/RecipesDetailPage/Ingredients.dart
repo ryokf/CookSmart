@@ -1,6 +1,7 @@
 // ignore_for_file: prefer_typing_uninitialized_variables
 
 import 'package:cook_smart/Themes/themes.dart';
+import 'package:cook_smart/helper/DatabaseHelper.dart';
 import 'package:cook_smart/helper/removeDecimal.dart';
 import 'package:flutter/material.dart';
 
@@ -35,28 +36,41 @@ class Ingridients extends StatelessWidget {
                   return Padding(
                     padding: const EdgeInsets.only(bottom: 16.0),
                     child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        const Icon(
-                          Icons.circle,
-                          color: Colors.black,
-                          size: 8,
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.circle,
+                              color: Colors.black,
+                              size: 8,
+                            ),
+                            const SizedBox(
+                              width: 8,
+                            ),
+                            Text(
+                              "${removeDecimalZeroFormat(ingredientsData[index]["measures"]["metric"]["amount"])} ${ingredientsData[index]["measures"]["metric"]["unitLong"] ?? ""} ",
+                              style: TextStyle(
+                                fontSize: fontSizeLarge,
+                                fontWeight: FontWeight.w600,
+                                color: blackColor,
+                              ),
+                            ),
+                            Text(ingredientsData[index]["nameClean"]??ingredientsData[index]["name"], style: TextStyle(
+                              fontSize: fontSizeLarge,
+                              fontWeight: FontWeight.w500,
+                              color: blackColor,
+                            ))
+                          ],
                         ),
-                        const SizedBox(
-                          width: 8,
-                        ),
-                        Text(
-                          "${removeDecimalZeroFormat(ingredientsData[index]["measures"]["metric"]["amount"])} ${ingredientsData[index]["measures"]["metric"]["unitLong"] ?? ""} ",
-                          style: TextStyle(
-                            fontSize: fontSizeLarge,
-                            fontWeight: FontWeight.w600,
-                            color: blackColor,
-                          ),
-                        ),
-                        Text(ingredientsData[index]["nameClean"]??ingredientsData[index]["name"], style: TextStyle(
-                          fontSize: fontSizeLarge,
-                          fontWeight: FontWeight.w500,
-                          color: blackColor,
-                        ))
+                        ElevatedButton(onPressed: () async{
+                          await DatabaseHelper.instance.insertShoppingItem({
+                            "ingredientId": ingredientsData[index]["id"],
+                            "name": ingredientsData[index]["name"],
+                            "quantity": removeDecimalZeroFormat(ingredientsData[index]["measures"]["metric"]["amount"]),
+                            "unit": ingredientsData[index]["measures"]["metric"]["unitLong"]
+                          });
+                        }, child: Text("Beli"))
                       ],
                     ),
                   );
