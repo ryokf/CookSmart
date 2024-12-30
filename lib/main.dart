@@ -4,6 +4,7 @@ import 'package:cook_smart/Pages/FavoritePage/DetailRecipe.dart';
 import 'package:cook_smart/Pages/IngredientSearchPage/IngredientSearchPage.dart';
 import 'package:cook_smart/Pages/IngredientSearchPage/Result.dart';
 import 'package:cook_smart/Pages/MainPage.dart';
+import 'package:cook_smart/Pages/MealPlanPage/DetailPlanPage.dart';
 import 'package:cook_smart/Pages/RecipesDetailPage/RecipeDetailPage.dart';
 import 'package:cook_smart/Pages/SearchResultPage/SearchResultPage.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +34,12 @@ class MyApp extends StatelessWidget {
         path: '/',
         builder: (context, state) => MainPage(),
         routes: [
+          GoRoute(path: '/detail-plan/:day', builder: (context, state) {
+            final day = state.pathParameters['day']!;
+            return DetailPlanPage(
+              day: day,
+            );
+          }),
           GoRoute(
             path: '/:pageIndex',
             builder: (context, state) {

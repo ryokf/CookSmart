@@ -5,10 +5,31 @@ import 'package:cook_smart/Themes/themes.dart';
 import 'package:cook_smart/helper/DatabaseHelper.dart';
 import 'package:flutter/material.dart';
 
-class Section extends StatelessWidget {
+class Section extends StatefulWidget {
   Section({super.key, required this.state});
 
   bool state;
+
+  @override
+  _SectionState createState() => _SectionState();
+}
+
+class _SectionState extends State<Section> {
+  List<Map<String, dynamic>> shoppingList = [];
+  bool isLoading = true;
+
+  @override
+  void initState() {
+    super.initState();
+    fetchShoppingList();
+  }
+
+  Future<void> fetchShoppingList() async {
+    shoppingList = await DatabaseHelper.instance.fetchShoppingList(widget.state);
+    setState(() {
+      isLoading = false;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -20,14 +41,14 @@ class Section extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8),
             child: Text(
-                state ? "Bahan yang sudah dibeli" : "Bahan yang belum dibeli",
+                widget.state ? "Bahan yang sudah dibeli" : "Bahan yang belum dibeli",
                 style: TextStyle(
                     fontSize: fontSizeLarge, fontWeight: FontWeight.w500)),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 12),
             child: Text(
-              this.state
+              widget.state
                   ? "Daftar barang dibawah akan hilang secara otomatis setelah 24 jam, pastikan  anda sudah membeli barang yang dibutuhkan"
                   : "Bahan yang anda simpan untuk catatan anda belanja, bisa diakses secara offline",
               style: TextStyle(
@@ -36,31 +57,25 @@ class Section extends StatelessWidget {
               ),
             ),
           ),
-          FutureBuilder(
-              future: DatabaseHelper.instance.fetchShoppingList(this.state),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return ListView.builder(
-                    shrinkWrap: true,
-                    physics: const NeverScrollableScrollPhysics(),
-                    itemCount: snapshot.data?.length,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 12),
-                        child: IngredientCard(
-                          isCheck: this.state,
-                          id: snapshot.data![index]["id"],
-                          name: snapshot.data![index]["name"],
-                          quantity: snapshot.data![index]["quantity"],
-                          unit: snapshot.data![index]["unit"],
-                        ),
-                      );
-                    },
-                  );
-                } else {
-                  return const Center(child: CircularProgressIndicator());
-                }
-              })
+          isLoading
+              ? const Center(child: CircularProgressIndicator())
+              : ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: shoppingList.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: const EdgeInsets.only(bottom: 12),
+                      child: IngredientCard(
+                        isCheck: widget.state,
+                        id: shoppingList[index]["id"],
+                        name: shoppingList[index]["name"],
+                        quantity: shoppingList[index]["quantity"],
+                        unit: shoppingList[index]["unit"],
+                      ),
+                    );
+                  },
+                ),
         ],
       ),
     );
