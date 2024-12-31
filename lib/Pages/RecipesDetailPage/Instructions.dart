@@ -24,7 +24,7 @@ class Instructions extends StatelessWidget {
                   Padding(
                     padding: const EdgeInsets.only(bottom: 12, top: 12),
                     child: Text(
-                      "Langkah-langkah yang dibutuhkan untuk membuat resep ini",
+                        "Steps required to make this recipe",
                       style: TextStyle(
                         fontSize: fontSizeSmall,
                         fontWeight: FontWeight.w400,
@@ -52,17 +52,6 @@ class Instructions extends StatelessWidget {
                           }),
                     ),
                   ),
-                  // BulletedList(
-                  //   listOrder: ListOrder.ordered,
-                  //   bulletColor: primaryColor,
-                  //   bulletType: BulletType.numbered,
-                  //   style: TextStyle(
-                  //     fontSize: fontSizeLarge,
-                  //     fontWeight: FontWeight.w400,
-                  //     color: blackColor,
-                  //   ),
-                  //   listItems: instructionList,
-                  // )
                 ],
               ),
             ),

@@ -22,7 +22,7 @@ class _FavoritePageState extends State<FavoritePage> {
       child: NestedScrollView(
           headerSliverBuilder: (context, innerBoxIsScrolled) {
             return [
-              TitleBar(size: size, innerBoxIsScrolled: innerBoxIsScrolled, title: 'Resep Favorit',)
+              TitleBar(size: size, innerBoxIsScrolled: innerBoxIsScrolled, title: 'Favorite recipe',)
             ];
           },
           body: const SingleChildScrollView(

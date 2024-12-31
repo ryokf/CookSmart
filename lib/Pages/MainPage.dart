@@ -25,9 +25,9 @@ class _MainPageState extends State<MainPage> {
 
   final List<String> appBarTitles = [
     "",
-    "Resep disimpan",
-    "Daftar belanja",
-    "Rencana makan",
+    "Saved Recipes",
+    "Shopping List",
+    "Meal Plan",
   ];
 
   @override
@@ -41,7 +41,7 @@ class _MainPageState extends State<MainPage> {
           setState(() {
             if (widget.indexPage != 0) {
               _currentIndex = widget.indexPage;
-            }else {
+            } else {
               _currentIndex = index;
             }
           });
@@ -49,19 +49,19 @@ class _MainPageState extends State<MainPage> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-            label: 'Beranda',
+            label: 'Home',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.bookmark),
-            label: 'Resep disimpan',
+            label: 'Saved Recipes',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.shopping_cart),
-            label: 'Daftar belanja',
+            label: 'Shopping List',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.library_books_rounded),
-            label: 'Rencana makan',
+            label: 'Meal Plan',
           ),
         ],
         selectedItemColor: primaryColor,

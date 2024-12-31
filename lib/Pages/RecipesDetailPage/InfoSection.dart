@@ -20,13 +20,13 @@ class InfoSection extends StatelessWidget {
           InfoCard(
             icon: Icons.timer,
             title: "time cooking",
-            value: "$timeCooking menit",
+            value: "$timeCooking minute",
           ),
           const SizedBox(width: 12),
           InfoCard(
               icon: Icons.local_fire_department,
               title: "calories",
-              value: "$calories cal"),
+              value: "$calories kkal"),
           const SizedBox(width: 12),
           InfoCard(
             // icon: Icons.health_and_safety,

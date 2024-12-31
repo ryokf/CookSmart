@@ -55,7 +55,7 @@ class _SearchResultPageState extends State<SearchIngredientsResultPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SearchInput(
-              helperText: "pisahkan setiap bahan dengan koma",
+                helperText: "separate each ingredient with a comma",
               onSubmitted: (value) {
                 context.push('/ingredient-search/$value');
               },
@@ -63,51 +63,6 @@ class _SearchResultPageState extends State<SearchIngredientsResultPage> {
             const SizedBox(
               height: 12,
             ),
-            // Container(
-            //   height: 35,
-            //     padding: const EdgeInsets.symmetric(horizontal: 12),
-            //     decoration: BoxDecoration(
-            //       color: Colors.orange.shade50,
-            //       borderRadius: BorderRadius.circular(8),
-            //     ),
-            //     child: DropdownButton(
-            //       underline: Container(),
-            //       hint: Text(
-            //         'Pilih Bahan',
-            //         style: TextStyle(fontSize: fontSizeBase),
-            //       ),
-            //       items: [
-            //         DropdownMenuItem(
-            //           value: 'Pasta',
-            //           child: Text(
-            //             'Pasta',
-            //             style: TextStyle(fontSize: fontSizeBase),
-            //           ),
-            //         ),
-            //         DropdownMenuItem(
-            //           value: 'Tomato',
-            //           child: Text(
-            //             'Tomato',
-            //             style: TextStyle(fontSize: fontSizeBase),
-            //           ),
-            //         ),
-            //         DropdownMenuItem(
-            //           value: 'Onion',
-            //           child: Text(
-            //             'Onion',
-            //             style: TextStyle(fontSize: fontSizeBase),
-            //           ),
-            //         ),
-            //         DropdownMenuItem(
-            //           value: 'Garlic',
-            //           child: Text(
-            //             'Garlic',
-            //             style: TextStyle(fontSize: fontSizeBase),
-            //           ),
-            //         ),
-            //       ],
-            //       onChanged: (value) {},
-            //     )),
             const SizedBox(
               height: 12,
             ),

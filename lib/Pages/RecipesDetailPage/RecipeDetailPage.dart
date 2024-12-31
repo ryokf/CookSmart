@@ -116,15 +116,15 @@ class _RecipeDetailPageState extends State<RecipeDetailPage>
                       indicatorColor: primaryColor,
                       labelColor: primaryColor,
                       indicatorSize: TabBarIndicatorSize.tab,
-                      tabs: const [
+                        tabs: const [
                         Tab(
-                          text: "Bahan",
+                          text: "Ingredients",
                         ),
                         Tab(
-                          text: "Langkah",
+                          text: "Steps",
                         ),
                         Tab(
-                          text: "Nutrisi",
+                          text: "Nutrition",
                         ),
                         Tab(
                           text: "Info",

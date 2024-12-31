@@ -47,7 +47,7 @@ class _SearchResultPageState extends State<SearchResultPage> {
         centerTitle: true,
         backgroundColor: Colors.white,
         title: Text(
-          'Hasil Pencarian "${widget.query}"',
+            'Search Results for "${widget.query}"',
           style: TextStyle(color: Colors.black, fontSize: fontSizeLarge),
         ),
         leading: IconButton(

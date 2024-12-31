@@ -3,7 +3,6 @@
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
 
-
 class Header extends StatelessWidget {
   const Header({super.key});
 
@@ -28,13 +27,13 @@ class Header extends StatelessWidget {
           ),
           Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Text(
-              'Halo Ryo',
+              'Hello Ryo',
               style: TextStyle(
                 fontSize: fontSizeBase,
                 color: greyColor,
               ),
             ),
-            Text('Mau masak apa hari ini?',
+            Text('What do you want to cook today?',
                 style: TextStyle(
                   fontSize: fontSizeBase,
                   color: blackColor,

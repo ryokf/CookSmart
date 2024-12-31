@@ -1,6 +1,7 @@
+// ignore_for_file: use_build_context_synchronously
+
 import 'package:cook_smart/Components/TitleBar.dart';
 import 'package:cook_smart/Pages/FavoritePage/DetailRecipe.dart';
-import 'package:cook_smart/Themes/themes.dart';
 import 'package:cook_smart/helper/DatabaseHelper.dart';
 import 'package:flutter/material.dart';
 
@@ -22,7 +23,7 @@ class _MealPlanPageState extends State<MealPlanPage> {
     "Minggu"
   ];
 
-  Map<String, List<Map<String, dynamic>>> _mealPlans = {};
+  final Map<String, List<Map<String, dynamic>>> _mealPlans = {};
 
   @override
   void initState() {
@@ -50,7 +51,7 @@ class _MealPlanPageState extends State<MealPlanPage> {
             TitleBar(
               size: size,
               innerBoxIsScrolled: innerBoxIsScrolled,
-              title: "Rencana Makan",
+                title: "Meal Plan",
             )
           ];
         },
@@ -64,17 +65,18 @@ class _MealPlanPageState extends State<MealPlanPage> {
                         sum + (meal['calories'] as num? ?? 0).toDouble()) ??
                 0;
             return Card(
+              color: Colors.white,
               margin: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
               child: ExpansionTile(
                 title: Text(
                   day,
                   style: const TextStyle(
-                      fontSize: 18, fontWeight: FontWeight.bold),
+                      fontSize: 16,),
                 ),
                 subtitle: Text(
-                  "Total Kalori: $totalCalories Kkal",
+                    "Total Calories: $totalCalories Kcal",
                   style: const TextStyle(
-                      fontSize: 14),
+                      fontSize: 12, color: Colors.grey),
                 ),
                 children: [
                   // Menampilkan rencana makan dengan detail
@@ -109,7 +111,7 @@ class _MealPlanPageState extends State<MealPlanPage> {
                             overflow: TextOverflow.ellipsis,
                           ),
                           subtitle: Text(
-                            meal['calories'].toString() + " Kkal",
+                            "${meal['calories']} Kkal",
                             style: const TextStyle(
                                 fontSize: 12, fontWeight: FontWeight.bold),
                           ),
@@ -126,7 +128,7 @@ class _MealPlanPageState extends State<MealPlanPage> {
                       )),
                   ListTile(
                     leading: const Icon(Icons.add, color: Colors.green),
-                    title: const Text("Tambah Rencana Makan"),
+                    title: const Text("Add Meal Plan"),
                     onTap: () => _showRecipeModalSheet(context, day),
                   ),
                 ],

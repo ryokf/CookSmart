@@ -20,7 +20,7 @@ class Ingridients extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(bottom: 12, top: 12),
             child: Text(
-              "Bahan yang dibutuhkan untuk membuat resep ini",
+                "Ingredients needed for this recipe",
               style: TextStyle(
                 fontSize: fontSizeSmall,
                 fontWeight: FontWeight.w400,
@@ -29,7 +29,7 @@ class Ingridients extends StatelessWidget {
             ),
           ),
           SizedBox(
-            height: 300,
+            height: 400,
             child: ListView.builder(
                 itemCount: ingredientsData.length,
                 itemBuilder: (context, index) {
@@ -56,10 +56,14 @@ class Ingridients extends StatelessWidget {
                                 color: blackColor,
                               ),
                             ),
-                            Text(ingredientsData[index]["nameClean"]??ingredientsData[index]["name"], style: TextStyle(
+                            Text(
+                              (ingredientsData[index]["nameClean"] ?? ingredientsData[index]["name"]).toString().length > 18 
+                              ? (ingredientsData[index]["nameClean"] ?? ingredientsData[index]["name"]).toString().substring(0, 18) + '...' 
+                              : (ingredientsData[index]["nameClean"] ?? ingredientsData[index]["name"]),
+                              style: TextStyle(
                               fontSize: fontSizeLarge,
                               fontWeight: FontWeight.w500,
-                              color: blackColor,
+                              color: blackColor,                          
                             ))
                           ],
                         ),
@@ -70,25 +74,12 @@ class Ingridients extends StatelessWidget {
                             "quantity": removeDecimalZeroFormat(ingredientsData[index]["measures"]["metric"]["amount"]),
                             "unit": ingredientsData[index]["measures"]["metric"]["unitLong"]
                           });
-                        }, child: Text("Beli"))
+                        }, child: Text("Buy"))
                       ],
                     ),
                   );
                 }),
           )
-          // BulletedList(
-          //   style: TextStyle(
-          //     fontSize: fontSizeLarge,
-          //     fontWeight: FontWeight.w400,
-          //     color: blackColor,
-          //   ),
-          //   bullet: const Icon(
-          //     Icons.circle,
-          //     color: Colors.black,
-          //     size: 8,
-          //   ),
-          //   listItems: ingredientsData,
-          // )
         ],
       ),
     );

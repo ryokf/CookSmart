@@ -1,6 +1,5 @@
 import 'package:cook_smart/Themes/themes.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class SearchInput extends StatelessWidget {
   SearchInput({super.key, this.helperText, required this.onSubmitted});
@@ -19,7 +18,7 @@ class SearchInput extends StatelessWidget {
           Icons.search,
           color: greyColor,
         ),
-        hintText: 'Cari resep',
+        hintText: 'Search for recipes',
         hintStyle: TextStyle(
           color: greyColor,
           fontSize: fontSizeLarge,

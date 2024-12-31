@@ -1,27 +1,14 @@
 import 'dart:convert';
-
 import 'package:cook_smart/Components/RecipeCard.dart';
 import 'package:cook_smart/Pages/FavoritePage/DetailRecipe.dart';
-import 'package:cook_smart/Themes/themes.dart';
 import 'package:cook_smart/helper/DatabaseHelper.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 class FavoriteList extends StatelessWidget {
   const FavoriteList({super.key});
 
   @override
   Widget build(BuildContext context) {
-    final List<String> ingredients = [
-      'Pasta',
-      'Tomato',
-      'Onion',
-      'Garlic',
-      'Spices',
-      'Cheese',
-      'Meat',
-    ];
     return Container(
       margin: const EdgeInsets.only(top: 12),
       height: 800,
@@ -31,7 +18,7 @@ class FavoriteList extends StatelessWidget {
           if (snapshot.hasData) {
             final recipes = snapshot.data as List<Map<String, dynamic>>;
             if (recipes.isEmpty) {
-              return const Center(child: Text('Tidak ada resep tersimpan.'));
+              return const Center(child: Text('No saved recipes.'));
             }
             return GridView.builder(
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

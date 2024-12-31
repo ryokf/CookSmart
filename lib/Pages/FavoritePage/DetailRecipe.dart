@@ -23,12 +23,12 @@ class DetailRecipe extends StatelessWidget {
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
     return DefaultTabController(
-      length: 2, // Jumlah tab
+      length: 2, // Number of tabs
       child: Scaffold(
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Gambar
+            // Image
             if (imageUrl != null)
               Stack(
                 children: [
@@ -93,7 +93,7 @@ class DetailRecipe extends StatelessWidget {
                       //   size: 32,
                       // ),
                       child: Text(
-                        "Hapus",
+                        "Delete",
                         style: TextStyle(
                           color: Colors.white,
                           fontSize: fontSizeBase,
@@ -103,7 +103,7 @@ class DetailRecipe extends StatelessWidget {
                         () async {
                           await DatabaseHelper.instance.deleteRecipe(id);
                           ScaffoldMessenger.of(context).showSnackBar(
-                            const SnackBar(content: Text('Resep dihapus!')),
+                            const SnackBar(content: Text('Recipe deleted!')),
                           );
                         }();
                         context.push('/');
@@ -135,15 +135,15 @@ class DetailRecipe extends StatelessWidget {
             const SizedBox(height: 8),
             const TabBar(
               tabs: [
-                Tab(text: "Bahan"),
-                Tab(text: "Langkah"),
+                Tab(text: "Ingredients"),
+                Tab(text: "Steps"),
               ],
             ),
-            // TabBarView untuk isi tab
+            // TabBarView for tab content
             Expanded(
               child: TabBarView(
                 children: [
-                  // Tab Bahan
+                  // Ingredients Tab
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: ListView(
@@ -153,7 +153,7 @@ class DetailRecipe extends StatelessWidget {
                           .toList(),
                     ),
                   ),
-                  // Tab Langkah
+                  // Steps Tab
                   Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: ListView(

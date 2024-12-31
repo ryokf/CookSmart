@@ -9,7 +9,7 @@ class Header extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.only(top: 12),
       child: Text(
-        "Resep yang disimpan bisa anda akses secara oflline",
+        "Saved recipes can be accessed offline",
         style: TextStyle(
             fontSize: fontSizeBase,
             fontWeight: FontWeight.w500,

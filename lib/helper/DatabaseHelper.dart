@@ -46,8 +46,7 @@ class DatabaseHelper {
     ingredientId TEXT,
     name TEXT NOT NULL,
     quantity TEXT,
-    unit TEXT,
-    isBought INTEGER DEFAULT 0
+    unit TEXT
   )
 ''');
 
@@ -122,13 +121,9 @@ class DatabaseHelper {
     }
   }
 
-  Future<List<Map<String, dynamic>>> fetchShoppingList(bool isBought) async {
+  Future<List<Map<String, dynamic>>> fetchShoppingList() async {
     final db = await instance.database;
-    return await db.query(
-      'shopping_list',
-      where: 'isBought = ?',
-      whereArgs: [isBought ? 1 : 0],
-    );
+    return await db.query('shopping_list');
   }
 
   Future<void> updateIsBought(int id, bool isBought) async {

@@ -81,7 +81,7 @@ class _HeaderState extends State<Header> {
             //   size: 32,
             // ),
             child: Text(
-              "simpan resep",
+              "save to favorite",
               style: TextStyle(
                 color: Colors.white,
                 fontSize: fontSizeBase,

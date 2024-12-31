@@ -16,7 +16,7 @@ class ShopingListPage extends StatelessWidget {
               TitleBar(
                 size: size,
                 innerBoxIsScrolled: innerBoxIsScrolled,
-                title: "Daftar Belanja",
+                title: "Shopping List",
               )
             ];
           },
@@ -24,13 +24,7 @@ class ShopingListPage extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Section(
-                  state: false,
-                ),
-                const Divider(),
-                Section(
-                  state: true,
-                ),
+                Section(),
               ],
             ),
           )),

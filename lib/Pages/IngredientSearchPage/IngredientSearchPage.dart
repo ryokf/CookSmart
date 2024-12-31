@@ -46,7 +46,8 @@ class IngredientSearchPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SearchInput(
-                helperText: "pisahkan setiap bahan dengan koma",
+                helperText: "separate each ingredient with a comma",
+                
                 onSubmitted: (value){
                   context.push('/ingredient-search/$value');
                 }, 
@@ -54,7 +55,7 @@ class IngredientSearchPage extends StatelessWidget {
               const Padding(
                 padding: EdgeInsets.only(top: 24),
                 child: Text(
-                  "Bahan yang sering digunakan",
+                  "Frequently Used Ingredients",
                 ),
               ),
               SizedBox(

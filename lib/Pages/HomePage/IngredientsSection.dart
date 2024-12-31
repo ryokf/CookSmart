@@ -45,7 +45,7 @@ class IngredientSection extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 const Text(
-                  "Resep berdasarkan bahan",
+                  "Recipe based on ingredients",
                 ),
                 GestureDetector(
                   onTap: () {
