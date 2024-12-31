@@ -7,7 +7,7 @@ import 'package:cook_smart/Pages/SearchResultPage/SearchResultPage.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:flutter/foundation.dart'; // Untuk mengecek platform
+import 'package:flutter/foundation.dart';
 import 'package:sqflite_common_ffi/sqflite_ffi.dart';
 
 void main() {
@@ -15,7 +15,6 @@ void main() {
       (defaultTargetPlatform == TargetPlatform.windows ||
           defaultTargetPlatform == TargetPlatform.macOS ||
           defaultTargetPlatform == TargetPlatform.linux)) {
-    // Inisialisasi sqflite_common_ffi untuk desktop
     sqfliteFfiInit();
     databaseFactory = databaseFactoryFfi;
   }
