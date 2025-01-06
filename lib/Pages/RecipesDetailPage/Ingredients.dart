@@ -34,7 +34,7 @@ class Ingridients extends StatelessWidget {
                 itemCount: ingredientsData.length,
                 itemBuilder: (context, index) {
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 16.0),
+                    padding: const EdgeInsets.only(bottom: 1),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
@@ -51,17 +51,17 @@ class Ingridients extends StatelessWidget {
                             Text(
                               "${removeDecimalZeroFormat(ingredientsData[index]["measures"]["metric"]["amount"])} ${ingredientsData[index]["measures"]["metric"]["unitLong"] ?? ""} ",
                               style: TextStyle(
-                                fontSize: fontSizeLarge,
+                                fontSize: fontSizeSmall,
                                 fontWeight: FontWeight.w600,
                                 color: blackColor,
                               ),
                             ),
                             Text(
-                              (ingredientsData[index]["nameClean"] ?? ingredientsData[index]["name"]).toString().length > 18 
-                              ? (ingredientsData[index]["nameClean"] ?? ingredientsData[index]["name"]).toString().substring(0, 18) + '...' 
+                              (ingredientsData[index]["nameClean"] ?? ingredientsData[index]["name"]).toString().length > 30 
+                              ? (ingredientsData[index]["nameClean"] ?? ingredientsData[index]["name"]).toString().substring(0, 30) + '...' 
                               : (ingredientsData[index]["nameClean"] ?? ingredientsData[index]["name"]),
                               style: TextStyle(
-                              fontSize: fontSizeLarge,
+                              fontSize: fontSizeSmall,
                               fontWeight: FontWeight.w500,
                               color: blackColor,                          
                             ))
@@ -74,7 +74,13 @@ class Ingridients extends StatelessWidget {
                             "quantity": removeDecimalZeroFormat(ingredientsData[index]["measures"]["metric"]["amount"]),
                             "unit": ingredientsData[index]["measures"]["metric"]["unitLong"]
                           });
-                        }, child: Text("Buy"))
+                        }, child: Text("Save", style: TextStyle(fontSize: fontSizeSmall, color: primaryColor),)
+                        , style: ButtonStyle(
+                          backgroundColor: MaterialStateProperty.all<Color>(Colors.orange.shade50),
+                          padding: MaterialStateProperty.all<EdgeInsetsGeometry>(EdgeInsets.symmetric(horizontal: 12, vertical: 8)
+                          )
+                        ),
+                        )
                       ],
                     ),
                   );

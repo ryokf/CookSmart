@@ -126,17 +126,6 @@ class DatabaseHelper {
     return await db.query('shopping_list');
   }
 
-  Future<void> updateIsBought(int id, bool isBought) async {
-    final db = await DatabaseHelper.instance.database;
-
-    await db.update(
-      'shopping_list',
-      {'isBought': isBought ? 1 : 0}, // Ubah nilai berdasarkan boolean
-      where: 'id = ?',
-      whereArgs: [id],
-    );
-  }
-
   Future<void> deleteShoppingItem(int id) async {
     final db = await instance.database;
     await db.delete('shopping_list', where: 'id = ?', whereArgs: [id]);
@@ -159,13 +148,11 @@ class DatabaseHelper {
     );
   }
 
-  // Mengambil Rencana Makan berdasarkan Hari
   Future<List<Map<String, dynamic>>> fetchMealPlansByDay(String day) async {
     final db = await instance.database;
     return await db.query('meal_plan', where: 'day = ?', whereArgs: [day]);
   }
 
-  // Menghapus Rencana Makan
   Future<void> deleteMealPlan(String id) async {
     final db = await instance.database;
     await db.delete('meal_plan', where: 'id = ?', whereArgs: [id]);
